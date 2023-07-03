@@ -7,6 +7,18 @@ function updateTabs() {
     (tab) => tab.innerText.trim().toLowerCase() === "for you"
   );
 
+  // Find the div that the 'For You' tab is in
+  const presentationTabs = document.querySelectorAll(
+    'div[role="presentation"]'
+  );
+
+  // If the presentation tab has no children, remove it
+  presentationTabs.forEach((tab) => {
+    if (tab.children.length === 0) {
+      tab.parentNode.removeChild(tab);
+    }
+  });
+
   // Check if the 'For You' tab exists before removing
   if (forYouTab) {
     forYouTab.parentNode.removeChild(forYouTab);
